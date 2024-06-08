@@ -13,7 +13,7 @@ pipeline {
         stage('Build docker image'){
             steps{
                 script{
-                    sh 'docker buildx build -t ankitjagtap/devops-integration .'
+                    sh 'docker buildx build -t omkar321/devops-integration .'
                 }
             }
         }
@@ -24,7 +24,7 @@ pipeline {
                    sh 'docker login -u ankitjagtap -p ${akshay1306}'
 
 }
-                   sh 'docker push ankitjagtap/devops-integration'
+                   sh 'docker push omkar321/devops-integration'
                 }
             }
         }
