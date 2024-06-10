@@ -20,8 +20,8 @@ pipeline {
         stage('Push image to Hub'){
             steps{
                 script{
-                   withCredentials([string(credentialsId: 'akshay1306', variable: 'akshay1306')]) {
-                   sh 'docker login -u ankitjagtap -p ${akshay1306}'
+                   withCredentials([string(credentialsId: 'dockerHub', variable: 'dockerHub')]) {
+                   sh 'docker login -u omkar321 -p ${dockerHub}'
 
 }
                    sh 'docker push omkar321/devops-integration'
