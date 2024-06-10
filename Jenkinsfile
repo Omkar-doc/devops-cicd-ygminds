@@ -20,11 +20,10 @@ pipeline {
         stage('Push image to Hub'){
             steps{
                 script{
-                   withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordvariable:'dockerHubpass',usernamevariable:'dockerHubuser')]) {
+                   withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable:'dockerHubPass',usernameVariable:'dockerHubUser')]) {
                    sh 'docker tag devops-integration ${env.dockerHubuser}/devops-integration
-                   sh 'docker login -u ${env.dockerHubuser} -p ${env.dockerHubpass}'
+                   sh 'docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}'
 
-}
                    sh 'docker push ${env.dockerHubuser}/devops-integration'
                 }
             }
