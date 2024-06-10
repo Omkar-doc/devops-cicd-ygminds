@@ -21,10 +21,10 @@ pipeline {
             steps{
                 script{
                    withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordVariable:'dockerHubPass',usernameVariable:'dockerHubUser')]) {
-                   sh 'docker tag devops-integration ${env.dockerHubuser}/devops-integration
+                   sh 'docker tag devops-integration ${env.dockerHubUser}/devops-integration
                    sh 'docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}'
 
-                   sh 'docker push ${env.dockerHubuser}/devops-integration'
+                   sh 'docker push ${env.dockerHubUser}/devops-integration'
                 }
             }
         }
