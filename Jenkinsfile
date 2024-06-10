@@ -13,18 +13,19 @@ pipeline {
         stage('Build docker image'){
             steps{
                 script{
-                    sh 'docker buildx build -t omkar321/devops-integration .'
+                    sh 'docker buildx build -t devops-integration .'
                 }
             }
         }
         stage('Push image to Hub'){
             steps{
                 script{
-                   withCredentials([string(credentialsId: 'dockerHub', variable: 'dockerHub')]) {
-                   sh 'docker login -u omkar321 -p ${dockerHub}'
+                   withCredentials([usernamePassword(credentialsId: 'dockerHub', passwordvariable:'dockerHubpass',usernamevariable:'dockerHubuser')]) {
+                   sh 'docker tag devops-integration ${env.dockerHubuser}/devops-integration
+                   sh 'docker login -u ${env.dockerHubuser} -p ${env.dockerHubpass}'
 
 }
-                   sh 'docker push omkar321/devops-integration'
+                   sh 'docker push ${env.dockerHubuser}/devops-integration'
                 }
             }
         }
