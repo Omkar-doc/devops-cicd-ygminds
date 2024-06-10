@@ -26,6 +26,7 @@ pipeline {
 
                    sh 'docker push ${env.dockerHubUser}/devops-integration'
                 }
+                }
             }
         }
         stage('EKS and Kubectl configuration'){
@@ -44,4 +45,4 @@ pipeline {
         }
     }
 }
-}
+
